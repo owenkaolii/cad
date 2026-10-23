@@ -24,6 +24,9 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
     #cadcraft_canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     #cadcraft_loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
       color: #b8b8b8; font: 14px system-ui, sans-serif; pointer-events: none; }
+    /* Stop Safari from selecting the app (the blue highlight) and showing its long-press menu */
+    html, body, canvas, div { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+    canvas { touch-action: none; outline: none; }
   </style>
 <link rel="modulepreload" href="./cadcraft-web-14819fd38d95487f.js" crossorigin="anonymous" integrity="sha384-55sxFxQxNAFZKfIV82JyYtZHhuhqD2azJDS3cCye1FpBjnp6rka6eZgL4mACbyrx"><link rel="preload" href="./cadcraft-web-14819fd38d95487f_bg.wasm" crossorigin="anonymous" integrity="sha384-l64wqDKw/1gjtqgQ7SX/oDjoslgIUC0CTDB9V8VJxJbwo0gdVX5yro+k/yl9379l" as="fetch" type="application/wasm"></head>
 <body>
@@ -33,6 +36,10 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
 if ("serviceWorker" in navigator) {
   addEventListener("load", function () { navigator.serviceWorker.register("./sw.js"); });
 }
+</script>
+<script>
+document.addEventListener("selectstart", function (e) { e.preventDefault(); });
+document.addEventListener("contextmenu", function (e) { if (e.target.tagName === "CANVAS") e.preventDefault(); });
 </script>
 </body>
 </html>
