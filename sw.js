@@ -1,11 +1,12 @@
 // Keeps CADCraft on this device so it opens without internet.
 // Change VERSION whenever you upload a new CADCraft build.
-const VERSION = "cadcraft-0.5.0";
+const VERSION = "cadcraft-0.18.0";
 const FILES = [
   "./",
   "./index.html",
-  "./cadcraft-web-14819fd38d95487f.js",
-  "./cadcraft-web-14819fd38d95487f_bg.wasm"
+  "./cadcraft-web-d875c3c223026021.js",
+  "./cadcraft-web-d875c3c223026021_bg.wasm",
+  "./snippets/eframe-d31a8450ea12dfc1/inline0.js"
 ];
 
 self.addEventListener("install", e => {
